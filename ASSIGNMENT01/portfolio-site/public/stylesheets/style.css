@@ -1,0 +1,456 @@
+/* Global Styles */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light background color */
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+footer {
+  padding: 20px;
+  background-color: #343a40; /* Dark footer background */
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #007bff; /* Bootstrap primary color */
+}
+
+.navbar a {
+  color: white; /* White text for links */
+}
+
+.navbar a:hover {
+  color: #ffc107; /* Change link color on hover */
+}
+
+/* Responsive Styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+  nav {
+      flex-direction: column;
+  }
+  li {
+      margin: 10px 0;
+  }
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Headings and Text */
+h1 {
+  font-size: 2.5rem; /* Larger heading size */
+  color: #343a40; /* Dark text color */
+  text-align: center; /* Center align headings */
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1rem; /* Responsive font size */
+  color: #555; /* Softer text color */
+}
+
+/* Custom styles for projects and forms */
+.card {
+  margin-bottom: 20px;
+  border: none; /* No border for a cleaner look */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.card-img-top {
+  height: 200px; /* Fixed height for project images */
+  object-fit: cover; /* Ensures images cover the card area */
+  border-top-left-radius: 8px; /* Round top corners */
+  border-top-right-radius: 8px; /* Round top corners */
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Spacing between form groups */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Primary button color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.text-center {
+  text-align: center; /* Center align text */
+}
+
+.mt-5 {
+  margin-top: 3rem !important; /* Custom top margin for spacing */
+}
+
+/* Footer styles */
+footer p {
+  color: #ffffff; /* White text for footer */
+}
+
+/* Link Styles */
+a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* No underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/*about page styling*/
+/* Center container */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+/* Video Box Styling */
+.video-box {
+  width: 310px;
+    height: 300px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 145px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Video Style */
+.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effect on Video Box */
+.video-box:hover {
+  transform: scale(1.05);
+}
+
+/* Disable video controls and pointer events */
+.video-box video {
+  pointer-events: none;
+}
+
+/* Hide video controls in webkit browsers */
+.video-box video::-webkit-media-controls {
+  display: none;
+}
+
+/* Info Box Styling */
+.info-box {
+  width: 80%;
+    max-width: 600px;
+    background-color: #d8d8d8;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px -1px 10px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Hover Effect on Info Box */
+.info-box:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Increase shadow */
+}
+
+/* Info Text Styling */
+.info-box h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #4f6881;
+}
+
+.info-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+
+
+/*contact page styling*/
+/* General container and layout styles */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Contact form styles */
+.contact-form {
+  display: flex;
+    background-color: #ededed;
+    box-shadow: 1px 1px 20px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 2em;
+}
+
+/* Lift the box on hover */
+.contact-form:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Left side image styles */
+.form-image {
+  flex: 1;
+  max-width: 300px;
+}
+
+.form-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* Right side form content styles */
+.form-content {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-container label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-form-container button {
+  padding: 10px 20px;
+  background-color: #4a647e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form-container button:hover {
+  background-color: #3e5569;
+}
+
+/* Contact info styles */
+.info p, .info ul {
+  margin: 10px 0;
+}
+
+.info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info ul li {
+  margin-bottom: 10px;
+}
+
+.info ul li a {
+  color: #4f6881;
+  text-decoration: none;
+}
+
+.info ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Heading with line styles */
+.heading-with-line {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.heading-with-line h2 {
+  font-size: 2.5rem;
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.heading-with-line .line {
+  display: inline-block;
+  height: 2px;
+  width: 100px;
+  background-color: #4f6881;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+/*projects page styling*/
+.projects-container {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background-color: #f2f2f2;
+    border: 1px solid #838080;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.project-links {
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #4f6881;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #3b5464;
+}
+
+/*home page*/
+.home-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.home-heading {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.info {
+  flex: 1;
+  margin-right: 20px; /* Space between text and image */
+  text-align: left; /* Align text to the left */
+}
+
+.profile-image {
+  flex: 1;
+}
+
+.profile-image img {
+  width: 100%;
+    margin-right: -10em;
+    max-width: 330px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.profile-image img:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+.know-more-button {
+  display: inline-block;
+  margin-top: 20px; /* Space above the button */
+  padding: 10px 30px;
+  background-color: #4f6881; /* Button background color */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 20px; /* Rounded corners */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.know-more-button:hover {
+  background-color: #b4d8f7; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
