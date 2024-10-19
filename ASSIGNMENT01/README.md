@@ -13,7 +13,7 @@ Peanut cup site
 Currency convertor
 
 # Live Site Link
-You can view the live version of my portfolio here: [My Portfolio](http://your-live-site-link.com)
+You can view the live version of my portfolio here: [My Portfolio](https://kritikas-portfolio.onrender.com/)
 
 # My strengths
 - HTML
