@@ -6,16 +6,22 @@ const Habit = require('../models/Habit');
 router.get('/', async (req, res) => {
   try {
     const habits = await Habit.find();
-    res.render('habits/index', { habits });
+    res.render('habits/index', { 
+      title: 'Your Habits', 
+      habits 
+    });
   } catch (error) {
     console.error('Error fetching habits:', error.message);
-    res.status(500).send('An error occurred while fetching habits.');
+    res.status(500).render('error', { 
+      message: 'Error fetching habits', 
+      error 
+    });
   }
 });
 
 // Render the habit creation form
 router.get('/create', (req, res) => {
-  res.render('habits/create');
+  res.render('habits/create', { title: 'Create Habit' });
 });
 
 // Create a new habit
@@ -27,7 +33,10 @@ router.post('/create', async (req, res) => {
     res.redirect('/habits');
   } catch (error) {
     console.error('Error creating habit:', error.message);
-    res.status(500).send('An error occurred while creating the habit.');
+    res.status(500).render('habits/create', { 
+      title: 'Create Habit', 
+      error: 'An error occurred while creating the habit. Please try again.' 
+    });
   }
 });
 
@@ -36,12 +45,20 @@ router.get('/edit/:id', async (req, res) => {
   try {
     const habit = await Habit.findById(req.params.id);
     if (!habit) {
-      return res.status(404).send('Habit not found');
+      return res.status(404).render('error', { 
+        message: 'Habit not found' 
+      });
     }
-    res.render('habits/edit', { habit });
+    res.render('habits/edit', { 
+      title: 'Edit Habit', 
+      habit 
+    });
   } catch (error) {
     console.error('Error fetching habit:', error.message);
-    res.status(500).send('An error occurred while fetching the habit.');
+    res.status(500).render('error', { 
+      message: 'An error occurred while fetching the habit.', 
+      error 
+    });
   }
 });
 
@@ -60,12 +77,18 @@ router.post('/edit/:id', async (req, res) => {
       { new: true }
     );
     if (!habit) {
-      return res.status(404).send('Habit not found');
+      return res.status(404).render('error', { 
+        message: 'Habit not found' 
+      });
     }
     res.redirect('/habits');
   } catch (error) {
     console.error('Error updating habit:', error.message);
-    res.status(500).send('An error occurred while updating the habit.');
+    res.status(500).render('habits/edit', { 
+      title: 'Edit Habit', 
+      error: 'An error occurred while updating the habit. Please try again.', 
+      habit: { _id: req.params.id, name, description, frequency, progress }
+    });
   }
 });
 
@@ -74,12 +97,17 @@ router.post('/:id/delete', async (req, res) => {
   try {
     const habit = await Habit.findByIdAndDelete(req.params.id);
     if (!habit) {
-      return res.status(404).send('Habit not found');
+      return res.status(404).render('error', { 
+        message: 'Habit not found' 
+      });
     }
     res.redirect('/habits');
   } catch (error) {
     console.error('Error deleting habit:', error.message);
-    res.status(500).send('An error occurred while deleting the habit.');
+    res.status(500).render('error', { 
+      message: 'An error occurred while deleting the habit.', 
+      error 
+    });
   }
 });
 

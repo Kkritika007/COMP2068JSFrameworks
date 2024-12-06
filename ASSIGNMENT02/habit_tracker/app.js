@@ -6,11 +6,14 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const hbs = require('hbs'); // Import hbs for partials registration
+const passport = require('passport');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 // Routers
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const habitsRouter = require('./routes/habits'); // Add the habits router
+const habitsRouter = require('./routes/habits'); // Habits router
 
 const app = express();
 
@@ -39,17 +42,42 @@ hbs.registerHelper('eq', function (a, b) {
   return a === b;
 });
 
-// Middleware
+// Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
+// Session setup
+app.use(
+  session({
+    secret: 'your-secret-key', // Use a strong secret key
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// Passport.js initialization
+require('./config/passport')(passport); // Initialize passport
+app.use(passport.initialize());
+app.use(passport.session()); // Use session for authentication
+
+// Flash messages middleware
+app.use(flash());
+
+// Make flash messages available to all views
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+// Routes setup
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/habits', habitsRouter); // Use the habits router
+app.use('/users', usersRouter); // Include users routes
+app.use('/habits', habitsRouter); // Include habits routes
 
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
