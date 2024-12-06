@@ -1,0 +1,172 @@
+/* General Body Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f39c12, #f1c40f); /* Gradient background */
+  color: #333; /* Dark text for readability */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensure the background covers the entire height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+}
+
+/* Container for page content */
+.container {
+  padding: 20px;
+  background-color: #ffffff; /* White background for the content area */
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  width: 100%; /* Full width of the container */
+  margin-top: 20px; /* Ensure the content isn't touching the top */
+}
+
+/* Title Styling */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Card Styles for Habit Items */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #777;
+}
+
+/* Edit and Delete Buttons */
+button, .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-right: 10px;
+  width: 130px; /* Same width for both buttons */
+  text-align: center;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: linear-gradient(45deg, #f39c12, #e67e22); /* Gradient for Edit Button */
+  color: white;
+}
+
+.edit-btn:hover {
+  background: linear-gradient(45deg, #e67e22, #f39c12); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Delete Button */
+.delete-btn {
+  background: linear-gradient(45deg, #e74c3c, #c0392b); /* Gradient for Delete Button */
+  color: white;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(45deg, #c0392b, #e74c3c); /* Reverse gradient on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Add margin and padding for better spacing around buttons */
+.card-body .d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* For Habit View Section */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Center the cards */
+}
+
+/* Add New Habit Button */
+.btn-primary {
+  background: linear-gradient(45deg, #ff6012d9, #e74c3c); /* Gradient for Add New Habit Button */
+  border-radius: 25px;
+  padding: 15px 30px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 20px;
+  width: 100%; /* Full width for a long button */
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #e74c3c, #ff6012d9); /* Reverse gradient on hover */
+}
+
+/* View My Habits Button */
+.btn-view-habits {
+  background: linear-gradient(45deg, #ff6012d9, #e74c3c); /* Gradient for View My Habits */
+  border-radius: 25px;
+  padding: 15px 30px;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 20px;
+  width: 100%; /* Full width to make the button long */
+}
+
+.btn-view-habits:hover {
+  background: linear-gradient(45deg, #e74c3c, #ff6012d9); /* Reverse gradient on hover */
+}
+
+/* Small text when there are no habits */
+p {
+  font-size: 1.25rem;
+  color: #777;
+  text-align: center;
+}
+
+/* Media Query for smaller devices */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn-primary,
+  .btn-view-habits {
+    width: 100%; /* Ensure buttons are full width on smaller screens */
+    font-size: 1.1rem;
+  }
+
+  /* Make cards stack on smaller screens */
+  .col-md-4 {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
