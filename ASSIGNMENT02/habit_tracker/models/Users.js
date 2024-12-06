@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-// Check if the Users model is already defined
-const Users = mongoose.models.Users || mongoose.model('Users', new mongoose.Schema({
+// Define the schema
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -16,6 +16,21 @@ const Users = mongoose.models.Users || mongoose.model('Users', new mongoose.Sche
     type: String,
     required: true,
   },
-}));
+});
 
-module.exports = Users;
+// Hash password before saving
+UserSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+// Add a method to compare passwords
+UserSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
+
+// Check if model already exists before defining it again
+const User = mongoose.models.User || mongoose.model('User', UserSchema);
+
+module.exports = User;
