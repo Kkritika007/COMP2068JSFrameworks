@@ -2,25 +2,25 @@
 body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #f39c12, #f1c40f); /* Gradient background */
-  color: #333; /* Dark text for readability */
+  color: #333;
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* Ensure the background covers the entire height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically center the content */
-  align-items: center; /* Horizontally center the content */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Container for page content */
+/* Container for Page Content */
 .container {
   padding: 20px;
-  background-color: #ffffff; /* White background for the content area */
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
-  width: 100%; /* Full width of the container */
-  margin-top: 20px; /* Ensure the content isn't touching the top */
+  width: 100%;
+  margin-top: 20px;
 }
 
 /* Title Styling */
@@ -29,6 +29,7 @@ h1 {
   font-weight: bold;
   color: #333;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 /* Card Styles for Habit Items */
@@ -37,6 +38,12 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-body {
@@ -55,12 +62,7 @@ h1 {
   margin-bottom: 15px;
 }
 
-.card p {
-  font-size: 1rem;
-  color: #777;
-}
-
-/* Edit and Delete Buttons */
+/* Button Styles */
 button, .btn {
   padding: 10px 20px;
   font-size: 1rem;
@@ -70,85 +72,91 @@ button, .btn {
   transition: all 0.3s ease;
   display: inline-block;
   margin-right: 10px;
-  width: 130px; /* Same width for both buttons */
+  width: 130px;
   text-align: center;
 }
 
 /* Edit Button */
-.edit-btn {
-  background: linear-gradient(45deg, #f39c12, #e67e22); /* Gradient for Edit Button */
+.btn .btn-warning {
+  background: linear-gradient(45deg, #f39c12, #e46b02);
   color: white;
 }
 
-.edit-btn:hover {
-  background: linear-gradient(45deg, #e67e22, #f39c12); /* Reverse gradient on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+.btn .btn-warning:hover {
+  background: linear-gradient(45deg, #e46b02, #f39c12);
+  transform: translateY(-2px);
 }
 
 /* Delete Button */
-.delete-btn {
-  background: linear-gradient(45deg, #e74c3c, #c0392b); /* Gradient for Delete Button */
+.btn .btn-danger {
+  background: linear-gradient(45deg, #d8584a, #c9301f);
   color: white;
 }
 
-.delete-btn:hover {
-  background: linear-gradient(45deg, #c0392b, #e74c3c); /* Reverse gradient on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+.btn .btn-danger:hover {
+  background: linear-gradient(45deg, #c9301f, #d8584a);
+  transform: translateY(-2px);
 }
 
-/* Add margin and padding for better spacing around buttons */
+/* Layout for Buttons within Cards */
 .card-body .d-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* For Habit View Section */
+/* Habit List Layout */
 .row {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center; /* Center the cards */
+  justify-content: center;
 }
 
 /* Add New Habit Button */
 .btn-primary {
-  background: linear-gradient(45deg, #ff6012d9, #e74c3c); /* Gradient for Add New Habit Button */
+  background: linear-gradient(45deg, #ff6012d9, #e74c3c);
   border-radius: 25px;
   padding: 15px 30px;
   font-size: 1.25rem;
   text-align: center;
   margin-top: 20px;
-  width: 100%; /* Full width for a long button */
+  width: 100%;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(45deg, #e74c3c, #ff6012d9); /* Reverse gradient on hover */
+  background: linear-gradient(45deg, #e74c3c, #ff6012d9);
+  transform: translateY(-2px);
 }
 
-/* View My Habits Button */
-.btn-view-habits {
-  background: linear-gradient(45deg, #ff6012d9, #e74c3c); /* Gradient for View My Habits */
-  border-radius: 25px;
-  padding: 15px 30px;
-  font-size: 1.25rem;
-  text-align: center;
-  margin-top: 20px;
-  width: 100%; /* Full width to make the button long */
-}
-
-.btn-view-habits:hover {
-  background: linear-gradient(45deg, #e74c3c, #ff6012d9); /* Reverse gradient on hover */
-}
-
-/* Small text when there are no habits */
+/* No Habits Message */
 p {
   font-size: 1.25rem;
   color: #777;
   text-align: center;
 }
 
-/* Media Query for smaller devices */
+/* View Habits Button */
+.btn-view-habits {
+  background: linear-gradient(45deg, #f1c40f, #f39c12); /* Yellow gradient */
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-right: 10px;
+  width: 20em;
+}
+
+.btn-view-habits:hover {
+  background: linear-gradient(45deg, #f39c12, #f1c40f); /* Inverted gradient on hover */
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .card-body {
     padding: 15px;
@@ -160,11 +168,11 @@ p {
 
   .btn-primary,
   .btn-view-habits {
-    width: 100%; /* Ensure buttons are full width on smaller screens */
+    width: 100%;
     font-size: 1.1rem;
   }
 
-  /* Make cards stack on smaller screens */
+  /* Cards Stack on Smaller Screens */
   .col-md-4 {
     max-width: 100%;
     flex: 0 0 100%;

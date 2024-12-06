@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
     const habits = await Habit.find();
     res.render('habits/index', { habits });
   } catch (error) {
-    res.status(500).send('Error fetching habits: ' + error.message);
+    console.error('Error fetching habits:', error.message);
+    res.status(500).send('An error occurred while fetching habits.');
   }
 });
 
@@ -25,11 +26,12 @@ router.post('/create', async (req, res) => {
     await habit.save();
     res.redirect('/habits');
   } catch (error) {
-    res.status(500).send('Error creating habit: ' + error.message);
+    console.error('Error creating habit:', error.message);
+    res.status(500).send('An error occurred while creating the habit.');
   }
 });
 
-// Display Edit Form
+// Display the habit edit form
 router.get('/edit/:id', async (req, res) => {
   try {
     const habit = await Habit.findById(req.params.id);
@@ -37,35 +39,47 @@ router.get('/edit/:id', async (req, res) => {
       return res.status(404).send('Habit not found');
     }
     res.render('habits/edit', { habit });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error finding habit');
+  } catch (error) {
+    console.error('Error fetching habit:', error.message);
+    res.status(500).send('An error occurred while fetching the habit.');
   }
 });
 
-// Update Habit
+// Update a habit
 router.post('/edit/:id', async (req, res) => {
-  const { name, description, frequency } = req.body;
+  const { name, description, frequency, progress } = req.body;
+  const formattedProgress = progress ? progress.map((entry) => ({
+    date: new Date(entry.date),
+    completed: entry.completed === 'on'
+  })) : [];
+
   try {
-    const habit = await Habit.findByIdAndUpdate(req.params.id, { name, description, frequency }, { new: true });
+    const habit = await Habit.findByIdAndUpdate(
+      req.params.id,
+      { name, description, frequency, progress: formattedProgress },
+      { new: true }
+    );
     if (!habit) {
       return res.status(404).send('Habit not found');
     }
     res.redirect('/habits');
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error updating habit');
+  } catch (error) {
+    console.error('Error updating habit:', error.message);
+    res.status(500).send('An error occurred while updating the habit.');
   }
 });
 
 // Delete a habit
 router.post('/:id/delete', async (req, res) => {
-  const { id } = req.params;
   try {
-    await Habit.findByIdAndDelete(id);
+    const habit = await Habit.findByIdAndDelete(req.params.id);
+    if (!habit) {
+      return res.status(404).send('Habit not found');
+    }
     res.redirect('/habits');
   } catch (error) {
-    res.status(500).send('Error deleting habit: ' + error.message);
+    console.error('Error deleting habit:', error.message);
+    res.status(500).send('An error occurred while deleting the habit.');
   }
 });
 

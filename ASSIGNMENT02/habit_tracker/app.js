@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const hbs = require('hbs'); // Import hbs for partials registration
 
 // Routers
 const indexRouter = require('./routes/index');
@@ -29,6 +30,14 @@ mongoose
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+// Register partials directory
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
+
+// Register custom helpers
+hbs.registerHelper('eq', function (a, b) {
+  return a === b;
+});
 
 // Middleware
 app.use(logger('dev'));
